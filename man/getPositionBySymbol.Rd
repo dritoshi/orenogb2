@@ -6,20 +6,24 @@
 This method search genome region by gene name.
 }
 \examples{
-genome.ver  <- 'hg19'
-zoom.power  <- 1
-smart2.bam.files   <- c(
-  "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_01.bam",
-  "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_02.bam"
-)
+s01.bam <- system.file("extdata", "Smart-Seq2_01.CDK2.bam", package = "orenogb2")
+s02.bam <- system.file("extdata", "Smart-Seq2_02.CDK2.bam", package = "orenogb2")
+cat(getwd(), "\\n")
+
+genome.ver <- 'hg19'
+zoom.power <- 1
+smart2.bam.files <- c(s01.bam, s02.bam)
 
 gb.smart2 <- orenogb2$new(
-  genome.ver  = genome.ver,
-  zoom.power  = zoom.power,
-  bam.files   = smart2.bam.files
+  genome.ver = genome.ver,
+  zoom.power = zoom.power,
+  bam.files  = smart2.bam.files
 )
 gb.smart2$getPositionBySymbol('CDK2')
+
+png("CDK2.png", height = 600, width = 600)
 gb.smart2$plotgb()
+dev.off()
 }
 \keyword{search}
 

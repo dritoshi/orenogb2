@@ -1,5 +1,12 @@
+.gitignore
 .DS_Store
 .git/*
+aux$
+log$
+out$
+png$
+pdf$
+tar.gz$
 README.md
+NEWS.md
 Rakefile
-.*.tar.gz

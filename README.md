@@ -1,7 +1,7 @@
-Orenogb
+orenogb2
 ====
 
-Ore no Genome Browser
+Ore no Genome Browser 2
 
 ## Description
 - wrapper of ggbio
@@ -14,17 +14,17 @@ Ore no Genome Browser
 
 ## Demo
 
-    genome.ver  <- 'mm10'
-    zoom.power  <- 1
-    quartz.bam.files   <- c(
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_01.bam",
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_02.bam"
-    )
+    q01.bam <- system.file("extdata", "Quartz_01.Pou5f1.bam", package = "orenogb2")
+    q02.bam <- system.file("extdata", "Quartz_02.Pou5f1.bam", package = "orenogb2")
+
+    genome.ver <- 'mm10'
+    zoom.power <- 1
+    quartz.bam.files <- c(q01.bam, q02.bam)
     
     gb.quartz <- orenogb2$new(
-      genome.ver  = genome.ver,
-      zoom.power  = zoom.power,
-      bam.files   = quartz.bam.files
+      genome.ver = genome.ver,
+      zoom.power = zoom.power,
+      bam.files  = quartz.bam.files
     )
     
     # Coordination
@@ -33,21 +33,18 @@ Ore no Genome Browser
     gb.quartz$end.bp   <- 35526079
     gb.quartz$plotgb()
 
-![demo](inst/extdata/demo1.png)
+![demo](Pou5f1.png)
 
 ### Semantic Zoom
 
-    genome.ver  <- 'mm10'
-    zoom.power  <- 1/200
-    quartz.bam.files   <- c(
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_01.bam",
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_02.bam"
-    )
+    genome.ver <- 'mm10'
+    zoom.power <- 1/200
+    quartz.bam.files <- c(q01.bam, q02.bam)
     
     gb.quartz <- orenogb2$new(
-      genome.ver  = genome.ver,
-      zoom.power  = zoom.power,
-      bam.files   = quartz.bam.files
+      genome.ver = genome.ver,
+      zoom.power = zoom.power,
+      bam.files  = quartz.bam.files
     )
     
     # Coordination
@@ -56,26 +53,26 @@ Ore no Genome Browser
     gb.quartz$end.bp   <- 35526079
     gb.quartz$plotgb()
 
-![demo](inst/extdata/demo2.png)
+![demo](Pou5f1.zoom.png)
 
 ### Search by Gene Symbol
 
-    genome.ver  <- 'hg19'
-    zoom.power  <- 1
-    smart2.bam.files   <- c(
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_01.bam",
-      "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_02.bam"
-    )
+    s01.bam <- system.file("extdata", "Smart-Seq2_01.CDK2.bam", package = "orenogb2")
+    s02.bam <- system.file("extdata", "Smart-Seq2_02.CDK2.bam", package = "orenogb2")  
+
+    genome.ver <- 'hg19'
+    zoom.power <- 1
+    smart2.bam.files <- c(s01.bam, s02.bam)
     
     gb.smart2 <- orenogb2$new(
-    genome.ver  = genome.ver,
-    zoom.power  = zoom.power,
-    bam.files   = smart2.bam.files
+      genome.ver = genome.ver,
+      zoom.power = zoom.power,
+      bam.files  = smart2.bam.files
     )
     gb.smart2$getPositionBySymbol('CDK2')
     gb.smart2$plotgb()
 
-![demo](inst/extdata/demo3.png)
+![demo](CDK2.png)
 
 ## Usage
 
@@ -93,13 +90,14 @@ Ore no Genome Browser
 
 ## Install
 
-    $ git clone git@github.com:dritoshi/orenogb2.git
-    $ cd orenogb2
     $ sudo R
     R> source("http://bioconductor.org/biocLite.R")
-    R> biocLite(c("ggbio", "GenomicRanges", "GenomicAlignments")
+    R> biocLite(c("ggbio", "GenomicRanges", "GenomicAlignments", "devtools")
     R> biocLite(c("Mus.musculus", "BSgenome.Mmusculus.UCSC.mm10"))
-    R> biocLite(c("Homo.sapiens", "BSgenome.Hsapiens.UCSC.hg19"))    
+    R> biocLite(c("Homo.sapiens", "BSgenome.Hsapiens.UCSC.hg19"))
+
+    R> library(devtools)
+    R> install_github("dritoshi/orenogb2")
 
 ## ToDo
 - wapper by shell script

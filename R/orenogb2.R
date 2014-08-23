@@ -1,4 +1,44 @@
-setRefClass(
+#' Package orenogb2 
+#' 
+#' @name orenogb2-package
+#' @docType package
+#' @aliases orenogb2 orenogb2-package
+#'
+#' @author
+#' Author: Itoshi NIKAIDO
+#' Maintainer: Itoshi NIKAIDO. \email{dritoshi@@gmail.com}
+#'
+#' @import methods
+#' @exportPattern '^[^\\.]'
+NULL
+
+#' Class orenogb2
+#'
+#' orenogb2 Class (description)
+#'
+#' \code{orenogb2} class is a reference class (details).
+#'
+#' @name orenogb2-class
+#' @docType class
+#'
+#' @section Fields:
+#' \itemize{
+#'   \item genome.ver, mm10, hg19 etc.
+#'   \item chr. chr1, chrX etc.
+#'   \item start.bp, genomic coordination (bp)
+#'   \item end.bp, genomic coordination (bp)
+#'   \item zoom.power, 1, 1/100 etc.
+#'   \item bam.files (test01.bam,test02.bam)
+#' }
+#' @section Contains:
+#' NULL
+#' @section Methods:
+#' \itemize{
+#'   \item plotgb
+#'   \item getPositionBySymbol
+#' }
+#' @keywords documentation
+orenogb2 <- setRefClass(
   "orenogb2",
   fields = list(
     genome.ver  = "character",
@@ -115,3 +155,52 @@ setRefClass(
     }
   )
 )
+#' draw a genome region
+#'
+#' This method draw specific genome region.
+#'
+#' @name plotgb
+#' @keywords plot
+#' @examples
+#' genome.ver  <- 'mm10'
+#' zoom.power  <- 1
+#' quartz.bam.files   <- c(
+#'   "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_01.bam",
+#'   "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Quartz-Seq/bam/Quartz_02.bam"
+#' )
+#' 
+#' gb.quartz <- orenogb2$new(
+#'   genome.ver  = genome.ver,
+#'   zoom.power  = zoom.power,
+#'   bam.files   = quartz.bam.files
+#' )
+#' 
+#' # Coordination
+#' gb.quartz$chr      <- "chr17"
+#' gb.quartz$start.bp <- 35492880
+#' gb.quartz$end.bp   <- 35526079
+#' gb.quartz$plotgb()
+NULL
+
+#' retrive genome coordination by gene name
+#'
+#' This method search genome region by gene name.
+#'
+#' @name getPositionBySymbol
+#' @keywords search
+#' @examples
+#' genome.ver  <- 'hg19'
+#' zoom.power  <- 1
+#' smart2.bam.files   <- c(
+#'   "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_01.bam",
+#'   "~/Dropbox_RIKEN/Public_ACCCBiT/Data/Smart-Seq2/bam/Smart-Seq2_02.bam"
+#' )
+#'
+#' gb.smart2 <- orenogb2$new(
+#'   genome.ver  = genome.ver,
+#'   zoom.power  = zoom.power,
+#'   bam.files   = smart2.bam.files
+#' )
+#' gb.smart2$getPositionBySymbol('CDK2')
+#' gb.smart2$plotgb()
+NULL

@@ -3,9 +3,17 @@ Type: Package
 Title: What the package does (short line)
 Version: 1.0
 Date: 2014-08-23
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: Itoshi NIKAIDO
+Maintainer: Itoshi NIKAIDO <dritoshi@gmail.com>
 Description: More about what it does (maybe more than one line)
-License: What license is it under?
-Depends: methods
-Suggests: testthat
+License: MIT
+Depends:
+    methods,
+    BSgenome.Mmusculus.UCSC.mm10,
+    BSgenome.Hsapiens.UCSC.hg19,
+    Mus.musculus,
+    Homo.sapiens,
+    ggbio,
+    GenomicAlignments,
+Suggests:
+    testthat

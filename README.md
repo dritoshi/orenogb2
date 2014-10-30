@@ -92,7 +92,7 @@ Ore no Genome Browser 2
 
     $ sudo R
     R> source("http://bioconductor.org/biocLite.R")
-    R> biocLite(c("ggbio", "GenomicRanges", "GenomicAlignments", "devtools")
+    R> biocLite(c("ggbio", "GenomicRanges", "GenomicAlignments", "devtools", "ShortRead"))
     R> biocLite(c("Mus.musculus", "BSgenome.Mmusculus.UCSC.mm10"))
     R> biocLite(c("Homo.sapiens", "BSgenome.Hsapiens.UCSC.hg19"))
 
